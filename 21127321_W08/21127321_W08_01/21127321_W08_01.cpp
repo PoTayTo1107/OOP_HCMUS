@@ -80,5 +80,10 @@ int main() {
 		cout << endl;
 	} while (opt >= 1 && opt <= 7);
 	
+	delete ns;
+	for (int i = 0; i < danhSach.size(); i++) {
+		delete danhSach[i];
+	}
+
 	return 0;
 }
