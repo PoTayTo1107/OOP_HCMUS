@@ -9,6 +9,7 @@
 using namespace std;
 
 class NhanSu {
+protected:
 	string hoTen;
 	int ngay;
 	int thang;
@@ -18,7 +19,7 @@ public:
 	NhanSu();
 	NhanSu(string, int, int, int, string);
 	NhanSu(const NhanSu&);
-	virtual ~NhanSu() = 0;
+	virtual ~NhanSu();
 	virtual float tinhLuong() = 0;
 	virtual void Input();
 	virtual void Output();

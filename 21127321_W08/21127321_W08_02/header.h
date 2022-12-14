@@ -15,37 +15,58 @@ protected:
 	string genre;
 	int year;
 	int played;
-public:
-	Song();
-	Song(string, string, string, string, int, int);
-	Song(const Song&);
-	virtual void Input();
-	virtual void Output();
-	virtual int getPlayed() = 0;
-	virtual string getName() = 0;
-};
-
-class PubSong : public Song {
 	int price;
 public:
-	PubSong();
-	PubSong(string, string, string, string, int, int, int);
-	PubSong(const PubSong&);
-	void Input();
-	void Output();
+	Song();
+	Song(string, string, string, string, int, int, int);
+	Song(const Song&);
+	~Song() {};
+	virtual void Input();
+	virtual void Output();
 	int getPlayed();
 	string getName();
+	string getLyric();
+	string getGenre();
+	virtual int getPrice();
 };
 
 class AuthSong : public Song {
-	int price;
 public:
-	AuthSong();
-	AuthSong(string, string, string, string, int, int, int);
-	AuthSong(const AuthSong&);
 	void Input();
 	void Output();
-	int getPlayed();
-	string getName();
+	int getPrice();
 };
 
+class Account {
+protected:
+	string username;
+	string password;
+	int debt;
+	bool isPre;
+public:
+	Account();
+	Account(string, string, int, bool);
+	Account(const Account&);
+	~Account() {};
+	virtual void Input();
+	string getUsername();
+	string getPassword();
+	bool getPre();
+	int getDebt();
+	virtual void Charge() {};
+	virtual int getTime() { return 0; };
+	virtual void addDebt(int);
+};
+
+class PreAccount : public Account {
+	int time;
+public:
+	PreAccount();
+	PreAccount(string, string, int, bool, int);
+	PreAccount(const PreAccount&);
+	~PreAccount() {};
+	void Input();
+	void Charge();
+	int getTime();
+	void addDebt(int);
+};

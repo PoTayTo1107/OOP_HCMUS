@@ -2,7 +2,7 @@
 
 int main() {
 	vector <NhanSu*> danhSach;
-	NhanSu* ns;
+	NhanSu* ns = new GiangVien;
 
 	int opt;
 	do {
@@ -11,9 +11,10 @@ int main() {
 		cout << "2. Tro giang" << endl;
 		cout << "3. Nghien cuu vien" << endl;
 		cout << "4. Chuyen vien" << endl;
-		cout << "5. Tinh tong luong" << endl;
-		cout << "6. Xuat danh sach nhan su" << endl;
-		cout << "7. Luong cua nhan su co luong cao nhat" << endl;
+		cout << "5. Thuc tap sinh" << endl;
+		cout << "6. Tinh tong luong" << endl;
+		cout << "7. Xuat danh sach nhan su" << endl;
+		cout << "8. Luong cua nhan su co luong cao nhat" << endl;
 		cout << "Bat ky ky tu nao khac de thoat" << endl;
 
 		cin >> opt;
@@ -50,6 +51,13 @@ int main() {
 			break;
 		}
 		case 5: {
+			ns = new ThucTapSinh;
+			ns->Input();
+			ns->Output();
+			danhSach.push_back(ns);
+			break;
+		}
+		case 6: {
 			float tongLuong = 0;
 			for (int i = 0; i < danhSach.size(); i++) {
 				tongLuong += danhSach[i]->tinhLuong();
@@ -58,14 +66,14 @@ int main() {
 			cout << fixed << setprecision(2) << tongLuong << endl;
 			break;
 		}
-		case 6: {
+		case 7: {
 			for (int i = 0; i < danhSach.size(); i++) {
 				cout << "Nhan su thu " << i + 1 << " :";
 				danhSach[i]->Output();
 			}
 			break;
 		}
-		case 7: {
+		case 8: {
 			float maxx = 0;
 			for (int i = 0; i < danhSach.size(); i++) {
 				if (danhSach[i]->tinhLuong() > maxx) maxx = danhSach[i]->tinhLuong();
@@ -78,7 +86,7 @@ int main() {
 			break;
 		}
 		cout << endl;
-	} while (opt >= 1 && opt <= 7);
+	} while (opt >= 1 && opt <= 8);
 	
 	delete ns;
 	for (int i = 0; i < danhSach.size(); i++) {
